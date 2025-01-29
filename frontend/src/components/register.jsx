@@ -2,9 +2,9 @@ import '../style/register.css';
 
 export default function Login() {
     return (
-        <div className="loginpage">
+        <div className="registerpage">
             <div className="maindiv">
-                <div className="logindiv">
+                <div className="registerdiv">
                     <div className="imgdiv">
                         <img 
                             className="userimg" 
@@ -12,8 +12,8 @@ export default function Login() {
                             alt="User"
                         />
                     </div>
-                    <button className="btn">User ID</button>
-                    <button className="btn">Create Password</button>
+                    <button className="btn4">User ID</button>
+                    <button className="btn4">Create Password</button>
                 </div>
                 <div className="textdiv">
                     <div className="text">Get started</div>

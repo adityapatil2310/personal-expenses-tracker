@@ -1,18 +1,25 @@
-.loginpage {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+  }
+  
+  .loginpage {
     background-image: url('/public/images/expensetracker.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    margin: 0;
-    height: 100vh;  
-    overflow: hidden; 
+    height: 100vh; 
+    overflow: hidden;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
   }
   
   .maindiv {
     display: flex;
-    width: 95%;
-    height: 50%;  
-    margin: 0 auto;
+    width: 90%; 
+    height: 70%;  
     justify-content: space-between;
   }
   
@@ -32,7 +39,7 @@
     width: 60%;  
     align-items: center;
     color: #FFF;
-    font-size: 6vw; 
+    font-size: 6vw;  
     font-weight: 700;
   }
   
@@ -42,8 +49,8 @@
   
   .imgdiv {
     background-color: white;
-    height: 12vw;  
-    width: 12vw;  
+    height: 30%;  
+    width: 40%;   
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -52,11 +59,11 @@
   
   .btn {
     border: none;
-    width: 40%;  
-    margin-top: 2%;
+    width: 60%; 
+    margin-top: 5%; 
     border-radius: 30px;
     background: linear-gradient(135deg, #E8EEF2, #D1D9E6);
-    height: 10%;  
+    height: 14%; 
     font-size: 2rem;
     font-weight: 600;
     color: #000;
