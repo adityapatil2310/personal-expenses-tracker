@@ -1,0 +1,213 @@
+.dashboardpage {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.Sidebar {
+    width: 17%;
+    height: 100vh;
+}
+
+.dashboard-components {
+    width: 83%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: 10%;
+    font-size: 150%;
+    padding-top: 4%;
+    width: 100%;
+}
+
+.h {
+    width: 40%;
+}
+
+.main {
+    height: 90%;
+    width: 100%;
+    display: flex;
+}
+
+.balance {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.balance-amount {
+    margin: 3.5%;
+    height: 10%;
+    border-radius: 10px;
+    border: 3px solid #0031AB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #D9D9D9;
+    font-size: 150%;
+    padding: 2%;
+}
+
+.budget {
+    height: 40%;
+    border-radius: 10px;
+    border: 3px solid #0031AB;
+    margin: 3.5%;
+    background: #E8EEF2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 150%;
+    font-weight: 600;
+}
+
+.monthly-expenses {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.expense1 {
+    height: 20%;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 170%;
+    flex-direction: column;
+}
+
+.h3 {
+    width: 80%;
+    align-items: center;
+}
+
+.housekeeping,
+.EMI-payments,
+.salon-services,
+.savings {
+    height: 20%;
+    border-radius: 10px;
+    border: 1px solid #000;
+    margin: 3%;
+    background: #F5F5F5;
+    display: flex;
+    padding: 3%;
+    justify-content: space-between;
+    padding-right: 10%;
+    font-weight: 500;
+    font-size: 120%;
+}
+
+.vertical-line {
+    width: 0.5px;
+    height: 82%;
+    background-color: black;
+    border: none;
+    margin-top: 5%;
+}
+
+.expense {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart {
+    height: 40%;
+}
+
+.statistics {
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    font-size: 150%;
+    font-weight: 600;
+    align-items: center;
+}
+
+.h4 {
+    width: 60%;
+}
+
+.graph3 {
+    height: 85%;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.graph3 canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.payments {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 150%;
+    font-weight: 600;
+}
+
+.devcom2,
+.seekOut,
+.urban-grocers,
+.matrix-salon {
+    height: 20%;
+    display: flex;
+    font-weight: 700;
+    font-size: 150%;
+    justify-content: space-between;
+    margin-top: 4%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.pink2,
+.yellow2,
+.blue2,
+.lightpink2 {
+    height: 80%;
+    width: 12%;
+    border-radius: 50%;
+    margin-right: 7%;
+}
+
+.pink2 {
+    background-color: #FF9999;
+}
+
+.yellow2 {
+    background-color: #F6FFBB;
+}
+
+.blue2 {
+    background-color: #98E7CF;
+}
+
+.lightpink2 {
+    background-color: #FAD8F2;
+}
+
+.h10 {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.h11 {
+    width: 50%;
+    margin-left: 26%;
+}

@@ -3,15 +3,13 @@ import "../style/analytics.css";
 import Sidebar from "./Sidebar";
 
 export default function Analytics() {
-  const graph1Ref = useRef(null); 
-  const pieChartRef = useRef(null); 
+  const graph1Ref = useRef(null);
+  const pieChartRef = useRef(null);
 
   useEffect(() => {
-    
     if (window.Chart) {
       const lineCtx = graph1Ref.current.getContext("2d");
 
-      
       if (graph1Ref.current.chartInstance) {
         graph1Ref.current.chartInstance.destroy();
       }
@@ -61,11 +59,9 @@ export default function Analytics() {
       });
     }
 
-  
     if (window.Chart) {
       const pieCtx = pieChartRef.current.getContext("2d");
 
-    
       if (pieChartRef.current.chartInstance) {
         pieChartRef.current.chartInstance.destroy();
       }
@@ -73,10 +69,9 @@ export default function Analytics() {
       pieChartRef.current.chartInstance = new window.Chart(pieCtx, {
         type: "pie",
         data: {
-         
           datasets: [
             {
-              data: [25, 30, 20, 25], 
+              data: [25, 30, 20, 25],
               backgroundColor: ["#E82838", "#5AAAC7", "#237B23", "#F6A312"],
               borderColor: ["#ffffff", "#ffffff", "#ffffff", "#ffffff"],
               borderWidth: 1,
@@ -113,14 +108,13 @@ export default function Analytics() {
               </div>
             </div>
             <div className="graph1">
-            
               <canvas ref={graph1Ref} style={{ width: "100%", height: "300px" }} />
             </div>
           </div>
           <div className="right">
             <div className="my-goals">My Goals</div>
             <div className="money-spent">
-              <p style={{ fontWeight: "700" }}>money spent</p>
+              <p style={{ fontWeight: "700", color: "#C4FAFF" }}>money spent</p>
               <p>this year:</p>
               <p>this month:</p>
             </div>
@@ -138,12 +132,11 @@ export default function Analytics() {
         </div>
         <div className="expense-summary">
           <div className="piechart">
-            <div className="piechart-header" style={{ textAlign: "center", fontWeight: "700",fontSize:"2rem" }}>
+            <div className="piechart-header" style={{ textAlign: "center", fontWeight: "700", fontSize: "2rem" }}>
               Expense Breakdown
             </div>
             <div className="graph2">
-            
-              <canvas ref={pieChartRef} style={{ width: "100%", height: "300px",marginTop:"0rem" }} />
+              <canvas ref={pieChartRef} style={{ width: "100%", height: "300px", marginTop: "0rem" }} />
             </div>
           </div>
           <div className="divisions">
@@ -165,19 +158,19 @@ export default function Analytics() {
             </div>
             <div className="colors">
               <div className="red1">
-                <div className="redblock"></div>
+                <div className="redblock"  style={{backgroundColor:"#E82838"}}></div>
                 <div style={{ width: "85%", paddingLeft: "1rem", fontSize: "1.5rem" }}>Impromptu Outing</div>
               </div>
               <div className="blue1">
-                <div className="blueblock"></div>
+                <div className="blueblock"  style={{backgroundColor:"#5AAAC7"}}></div>
                 <div style={{ width: "85%", paddingLeft: "1rem", fontSize: "1.5rem" }}>Apparel Purchase</div>
               </div>
               <div className="green1">
-                <div className="greenblock"></div>
+                <div className="greenblock"  style={{backgroundColor:"#237B23"}}></div>
                 <div style={{ width: "85%", paddingLeft: "1rem", fontSize: "1.5rem" }}>Furniture Purchases</div>
               </div>
               <div className="yellow1">
-                <div className="yellowblock"></div>
+                <div className="yellowblock"  style={{backgroundColor:"#F6A312"}}></div>
                 <div style={{ width: "85%", paddingLeft: "1rem", fontSize: "1.5rem" }}>SIP & DE-MAT</div>
               </div>
             </div>

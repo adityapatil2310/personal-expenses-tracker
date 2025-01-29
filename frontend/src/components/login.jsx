@@ -1,6 +1,11 @@
 import '../style/login.css';
-
+import Register from './register';
+import { useNavigate } from "react-router-dom";
 export default function Login() {
+    const navigate = useNavigate();
+    function redirect(){
+navigate("/register")
+    }
     return (
         <div className="loginpage">
             <div className="maindiv">
@@ -12,7 +17,7 @@ export default function Login() {
                             alt="User"
                         />
                     </div>
-                    <button className="btn">Login</button>
+                    <button className="btn" onClick={redirect}>Login</button>
                     <button className="btn">Sign up</button>
                 </div>
                 <div className="textdiv">
