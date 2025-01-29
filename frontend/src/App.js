@@ -9,7 +9,7 @@ import Transaction from './components/Transactions';
 function App() {
   return (
   <>
-  <Login/>
+  <Transaction/>
   </>
   );
 }
