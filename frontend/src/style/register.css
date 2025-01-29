@@ -1,43 +1,58 @@
-.registerpage{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; 
+}
+
+.loginpage {
     background-image: url('/public/images/expensetracker.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    margin: 0;
-    padding-top: 7rem;
     height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.maindiv{
+
+.maindiv {
     display: flex;
     width: 95%;
     height: 50vh;
     margin: 0 auto;
     justify-content: space-between;
 }
-.registerdiv{
+
+.logindiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  width: 35%;
-  margin-left:4rem;
+    width: 35%;
+    margin-left: 4rem;
 }
-.textdiv{
+
+.textdiv {
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 60%;
     align-items: center;
     color: #FFF;
-font-size:6.5rem;
-font-weight: 700;
--webkit-text-stroke: 2px #184C89;
-}
-.text{
+    font-size: 6.5rem;
     font-weight: 700;
--webkit-text-stroke: 5px #184C89;
 }
-.imgdiv{
+
+.text {
+    -webkit-text-stroke: 2px #184C89;
+}
+
+.imgdiv {
     background-color: white;
     height: 12rem;
     width: 12rem;
@@ -46,9 +61,10 @@ font-weight: 700;
     justify-content: center;
     align-items: center;
 }
+
 .btn {
     border: none;
-    width: 25rem;
+    width: 20rem;
     margin-top: 0.75rem;
     border-radius: 30px;
     border: 1px solid #000;
@@ -58,16 +74,18 @@ font-weight: 700;
     font-weight: 600;
     color: #000;
     cursor: pointer;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .btn:hover {
     background: linear-gradient(135deg, #D1D9E6, #9FAEC3);
-    color: #fff; 
+    color: #fff;
     transform: scale(1.05);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
+
 .btn:active {
     transform: scale(1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
