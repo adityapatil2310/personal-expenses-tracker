@@ -1,71 +1,86 @@
-.loginpage{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+  }
+  
+  .loginpage {
     background-image: url('/public/images/expensetracker.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    margin: 0;
-    padding-top: 7rem;
     height: 100vh; 
-}
-.maindiv{
+    overflow: hidden;
     display: flex;
-    width: 95%;
-    height: 50vh;
-    margin: 0 auto;
+    justify-content: center; 
+    align-items: center;
+  }
+  
+  .maindiv {
+    display: flex;
+    width: 90%; 
+    height: 70%;  
     justify-content: space-between;
-}
-.logindiv{
+  }
+  
+  .logindiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  width: 35%;
-  margin-left:4rem;
-}
-.textdiv{
+    width: 35%;  
+    margin-left: 5%;  
+  }
+  
+  .textdiv {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 60%;
+    width: 60%;  
     align-items: center;
     color: #FFF;
-font-size:6.5rem;
-font-weight: 700;
-}
-.text{
+    font-size: 6vw;  
+    font-weight: 700;
+  }
+  
+  .text {
     -webkit-text-stroke: 2px #184C89;
-}
-.imgdiv{
+  }
+  
+  .imgdiv {
     background-color: white;
-    height: 12rem;
-    width: 12rem;
+    height: 30%;  
+    width: 40%;   
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.btn {
+  }
+  
+  .btn {
     border: none;
-    width: 20rem;
-    margin-top: 0.75rem;
+    width: 60%; 
+    margin-top: 5%; 
     border-radius: 30px;
-    border: 1px solid #000;
     background: linear-gradient(135deg, #E8EEF2, #D1D9E6);
-    height: 6rem;
+    height: 14%; 
     font-size: 2rem;
     font-weight: 600;
     color: #000;
     cursor: pointer;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.btn:hover {
+  }
+  
+  .btn:hover {
     background: linear-gradient(135deg, #D1D9E6, #9FAEC3);
-    color: #fff; 
+    color: #fff;
     transform: scale(1.05);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
-}
-.btn:active {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn:active {
     transform: scale(1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-}
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  

@@ -1,74 +1,87 @@
-.dashboard{
-    width:17%;
-    height:100vh;
-    background-color:#184C89;
+.dashboard {
+    width: 17%;
+    height: 100vh;
+    background-color: #184c89;
     display: flex;
     flex-direction: column;
     align-items: space-around;
     justify-content: space-between;
-}
-.options{
+  }
+  
+  .options {
     display: flex;
     flex-direction: column;
-}
-.option{
-    background-color:#184C89;
-    color: #D2F0F7;
-    border-radius: .4375rem;
-    border:none;
-    width:90%;
-    height:4.6875%;
+  }
+  
+  .option {
+    background-color: #184c89;
+    color: #d2f0f7;
+    border-radius: 4.375%; 
+    border: none;
+    width: 90%;
+    height: 4.6875%; 
     font-weight: 700;
-    padding: auto;
-    margin: 1rem auto;
+    padding: 8%; 
+    margin: 2% auto; 
     font-size: 1.35rem;
-}
-.option:hover{
-    border-radius: 7px;
-border: 2px solid #9BD4E2;
-background: #E8EEF2;
-color:#184C89;
-}
-.clicked{
-    border-radius: 7px;
-    border: 2px solid #9BD4E2;
-    background-color: #E8EEF2;
-    color:#184C89;
-    width:90%;
-    margin: 0.3rem auto;
-    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .option:hover {
+    border-radius: 7%;
+    border: 2px solid #9bd4e2;
+    background: #e8eef2;
+    color: #184c89;
+  }
+  
+  .clicked {
+    border-radius: 7%;
+    border: 2px solid #9bd4e2;
+    background-color: #e8eef2;
+    color: #184c89;
+    width: 90%;
+    margin: 3% auto;  
+    padding: 8%; 
     font-weight: 700;
-    }
-    .lower{
-        margin-bottom: 1.2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .logoutbtn{
-        background-color:#184C89;
+  }
+  
+  .lower {
+    margin-bottom: 3%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logoutbtn {
+    background-color: #184c89;
     color: white;
-    border-radius: .4375rem;
-    border:none;
-    width:90%;
-    height:4.6875%;
+    border-radius: 4.375%;
+    border: none;
+    width: 90%;
+    height: 4.6875%;
     font-weight: 700;
-    padding: 0.5rem;
-    margin: 1rem auto;
+    padding: 8%; 
+    margin: 3% auto; 
     font-size: 1.3rem;
-    }
-    .userimg{
-        height: 50%;
-        width: 50%;
-        border-radius: 50%;
-    }
-    .userpic{
-        margin: 1rem auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .hrline{
-        width: 70%;
-    }
+  }
+  
+  .userimg {
+    height: 50%;
+    width: 50%;
+    border-radius: 50%;
+  }
+  
+  .userpic {
+    margin: 3% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .hrline {
+    width: 70%;
+    margin-top: 5%; 
+  }
+  
