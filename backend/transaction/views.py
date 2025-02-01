@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Transactions
-from .serializer import TransactionSerializer
+from .models import Transactions, Categories
+from .serializer import TransactionSerializer, CategorySerializer
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -46,4 +46,46 @@ def transactions(request, id):
             return Response(status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         transaction.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET'])
+def categoryTransaction(request, userId, category):
+    try:
+        transactions = Transactions.objects.filter(userId=userId, name=category)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = TransactionSerializer(transactions, many=True)
+        return JsonResponse(serializer.data, safe=False)
+    
+    
+    
+    
+                                ##### Category Views #####
+    
+@api_view(['GET', 'POST'])
+def Cat(request, userId):
+    if request.method == 'GET':
+        try:
+            categories = Categories.objects.filter(userId=userId)
+        except Categories.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = CategorySerializer(categories, many=True)
+        return JsonResponse(serializer.data, safe=False)
+    elif request.method == 'POST':
+        serializer = CategorySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['DELETE'])
+def deleteCategory(request, userId, category):
+    try:
+        categories = Categories.objects.get(userId=userId, name=category)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'DELETE':
+        categories.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

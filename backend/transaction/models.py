@@ -7,3 +7,11 @@ class Transactions(models.Model):
     date = models.DateField()
     text = models.CharField(max_length=500)
     transType = models.CharField(max_length=3, default='out')
+    category = models.CharField(max_length=50, default='other')
+    
+class Categories(models.Model):
+    name = models.CharField(max_length=50)
+    userId = models.DecimalField(max_digits=5, decimal_places=0)
+    
+    class Meta:
+        unique_together = ('name', 'userId')
