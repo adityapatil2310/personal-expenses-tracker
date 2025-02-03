@@ -6,18 +6,23 @@ import Login from './components/login';
 import Sidebar from './components/Sidebar';
 import Transaction from './components/Transactions';
 import Dashboard from "./components/dashboard";
+import { TruecntextProvider } from "./components/context";
+import LandingPage from "./components/landingpage";
 
 function App() {
   return(
-  <BrowserRouter>
+    <TruecntextProvider>
+      <BrowserRouter>
   <Routes>
+    <Route path="/" element={<LandingPage/>}/>
     <Route path="/login" element={<Login/>}/>
     <Route path="/register" element={<Register/>}/>
-    <Route path="transaction" element={<Transaction />} />
+    <Route path="/transaction" element={<Transaction />} />
     <Route path="/analytics" element={<Analytics />} />
     <Route path="/dashboard" element={<Dashboard/>}/>
   </Routes>
 </BrowserRouter>
+    </TruecntextProvider>
 );
 }
 

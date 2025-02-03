@@ -60,7 +60,7 @@
   .btn {
     border: none;
     width: 60%; 
-    margin-top: 10%; 
+    margin-top: 5%; 
     border-radius: 30px;
     background: linear-gradient(135deg, #E8EEF2, #D1D9E6);
     height: 14%; 
@@ -70,20 +70,6 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  .input1{
-    border: none;
-    width: 80%; 
-    margin-top: 5%; 
-    border-radius: 30px;
-    background: linear-gradient(135deg, #E8EEF2, #D1D9E6);
-    height: 14%; 
-    font-size: 2rem;
-    font-weight: 600;
-    color: #000;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding-left: 4%;
   }
   
   .btn:hover {

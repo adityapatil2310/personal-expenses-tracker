@@ -49,7 +49,7 @@
 
 .imgdiv {
   background-color: white;
-  height: 30%;  
+  height: 35%;  
   width: 40%;  
   border-radius: 50%;
   display: flex;
@@ -57,21 +57,48 @@
   align-items: center;
 }
 
-.btn4 {
+.input2{
   border: none;
-  width: 70%;  
-  margin-top: 5%;  
+  width: 100%;  
+  margin-top: 10%;
+  padding-left: 4%; 
   border-radius: 30px;
   background: linear-gradient(135deg, #E8EEF2, #D1D9E6);
-  height: 14%;  
+  height: 15%;  
   font-size: 2rem;
   font-weight: 600;
   color: #000;
-  cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.btn5{
+  border: none;
+  width: 70%;  
+  margin-top: 10%;  
+  border-radius: 30px;
+  background: linear-gradient(135deg, #E8EEF2, #D1D9E6);
+  height: 15%;  
+  font-size: 2rem;
+  font-weight: 600;
+  color: #000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 45%;
+}
+
+.btn5:hover {
+  background: linear-gradient(135deg, #D1D9E6, #9FAEC3);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
 .btn4:hover {
   background: linear-gradient(135deg, #D1D9E6, #9FAEC3);
   color: #fff;
