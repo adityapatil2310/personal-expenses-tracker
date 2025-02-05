@@ -26,7 +26,7 @@ def user_transactions(request, userid):
         except Transactions.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = TransactionSerializer(transactions)
-        return JsonResponse(serializer.data)
+        return JsonResponse(serializer.data, safe=False)
         
 @api_view(['GET', 'PUT', 'DELETE'])
 def transactions(request, id):
