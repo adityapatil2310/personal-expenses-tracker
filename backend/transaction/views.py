@@ -22,7 +22,7 @@ def user_transactions(request, userid):
         return Response(status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
         try:
-            transactions = Transactions.objects.get(userId=userid)
+            transactions = Transactions.objects.filter(userId=userid)
         except Transactions.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = TransactionSerializer(transactions)
