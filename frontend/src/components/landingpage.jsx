@@ -7,14 +7,13 @@ export default function LandingPage() {
     const navigate = useNavigate();
     const { istrue, setIstrue } = useContext(TrueContext);
 
-    // Redirect based on login/signup choice
     function redirect() {
-        setIstrue(true);  // Set flag to true for login view
+        setIstrue(true);  
         navigate("/login");
     }
 
     function redirect2() {
-        setIstrue(false); // Set flag to false for sign-up view
+        setIstrue(false); 
         navigate("/register");
     }
 

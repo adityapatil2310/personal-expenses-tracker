@@ -1,24 +1,72 @@
 import '../style/Transactions.css';
 import Sidebar from './Sidebar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Transaction() {
-  let [id, setId] = useState(null);
+  let trans = useNavigate();
+  let [transactions, setTransactions] = useState([]);
+  let [currentPage, setCurrentPage] = useState(0);
+  let [selectedTransaction, setSelectedTransaction] = useState(null);
+  const transactionsPerPage = 7;
 
-  function onhandlechange(id) {
-    setId(id);
+  function transaction() {
+    trans("/transaction/addTransaction");
   }
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("No token found!");
+          return;
+        }
+
+        const userResponse = await fetch("http://127.0.0.1:8000/authy/getId/", {
+          method: "GET",
+          headers: { "Authorization": `Token ${token}` },
+        });
+
+        if (!userResponse.ok) throw new Error(`HTTP error! Status: ${userResponse.status}`);
+
+        const userData = await userResponse.json();
+
+        const transactionsResponse = await fetch(`http://127.0.0.1:8000/transaction/user/${userData.userId}/`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!transactionsResponse.ok) throw new Error(`HTTP error! Status: ${transactionsResponse.status}`);
+
+        const transactionsData = await transactionsResponse.json();
+        setTransactions(transactionsData || []);
+      } catch (error) {
+        console.error("Error fetching transactions:", error);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
+
+  const startIndex = currentPage * transactionsPerPage;
+  const paginatedTransactions = transactions.slice(startIndex, startIndex + transactionsPerPage);
+
+  const formatDate = (dateString) => {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const [day, month, year] = dateString.split("-").map(Number);
+    return `${months[month - 1]} ${day}`;
+  };
 
   return (
     <div className='transactionpage'>
       <Sidebar className='sidebar' />
       <div className='transactionparts'>
         <div className='searchbar'>
-          <input
-            placeholder='Search transaction name, keyword etc.'
-            className='search'
-            type='text'
-          />
+          <input placeholder='Search transaction name, keyword etc.' className='search' type='text' />
         </div>
         <div className='filters-component'>
           <div className='filters'>Filters</div>
@@ -27,126 +75,83 @@ export default function Transaction() {
             <button className='btns'>Date</button>
             <button className='btns'>In/Out</button>
             <button className='btns'>Methods</button>
-            <button className='btns-long'>Add a Transaction</button>
+            <button className='btns-long' onClick={transaction}>Add a Transaction</button>
           </div>
           <hr className='hr' />
         </div>
         <div className='twocomponents'>
           <div className='transactiondetails1'>
             <table className='table'>
-              <tr className='TH'>
-                <th className='date'>Date</th>
-                <th className='from1'>From</th>
-                <th className='amount'>Amount</th>
-              </tr>
-              <tr
-                onClick={() => onhandlechange(1)}
-                className={`${id == 1 ? 'clicked' : ''} tr`}
-              >
-                <td className='td'>Jan 15</td>
-                <td className='td'>
-                  <div className='data'>
-                    <div className='pink'></div>
-                    <div>Devcom</div>
-                  </div>
-                </td>
-                <td className='value1'>$5999</td>
-              </tr>
-              <tr
-                onClick={() => onhandlechange(2)}
-                className={`${id == 2 ? 'clicked' : ''} tr`}
-              >
-                <td className='td'>Jan 15</td>
-                <td>
-                  <div className='data'>
-                    <div className='yellow'></div>
-                    <div>SeekOut</div>
-                  </div>
-                </td>
-                <td className='value2'>$600</td>
-              </tr>
-              <tr
-                onClick={() => onhandlechange(3)}
-                className={`${id == 3 ? 'clicked' : ''} tr`}
-              >
-                <td>Jan 16</td>
-                <td>
-                  <div className='green'></div>
-                </td>
-                <td></td>
-              </tr>
-              <tr
-                onClick={() => onhandlechange(4)}
-                className={`${id == 4 ? 'clicked' : ''} tr`}
-              >
-                <td>Jan 17</td>
-                <td>
-                  <div className='lightpink'></div>
-                </td>
-                <td></td>
-              </tr>
-              <tr
-                onClick={() => onhandlechange(5)}
-                className={`${id == 5 ? 'clicked' : ''} tr`}
-              >
-                <td>Jan 17</td>
-                <td>
-                  <div className='pink'></div>
-                </td>
-                <td></td>
-              </tr>
-              <tr
-                onClick={() => onhandlechange(6)}
-                className={`${id == 6 ? 'clicked' : ''} tr`}
-              >
-                <td>Jan 18</td>
-                <td>
-                  <div className='darkblue'></div>
-                </td>
-                <td></td>
-              </tr>
-              <tr
-                onClick={() => onhandlechange(7)}
-                className={`${id == 7 ? 'clicked' : ''} tr`}
-              >
-                <td>Jan 19</td>
-                <td>
-                  <div className='darkgreen'></div>
-                </td>
-                <td></td>
-              </tr>
+              <thead>
+                <tr className='TH'>
+                  <th className='date'>Date</th>
+                  <th className='from1'>From</th>
+                  <th className='amount'>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {paginatedTransactions.length > 0 ? (
+                  paginatedTransactions.map((e, i) => (
+                    <tr
+                      key={i}
+                      onClick={() => setSelectedTransaction(e)} // Store selected transaction
+                      className={`${selectedTransaction === e ? 'clicked' : ''} tr`}
+                    >
+                      <td className='td'>{formatDate(e.datetime.split(" ")[0]) || 'N/A'}</td>
+                      <td className='td'>
+                        <div className='data'>
+                          <div className='pink'></div>
+                          <div>{e.recipient || 'Unknown'}</div>
+                        </div>
+                      </td>
+                      <td className='value1'>${e.amount || '0.00'}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan='3' className='td' style={{ textAlign: 'center' }}>No Transactions Found</td>
+                  </tr>
+                )}
+              </tbody>
             </table>
+            <div className='pagination-controls'>
+              <button
+                className='pagination-btn'
+                onClick={() => setCurrentPage(currentPage - 1)}
+                disabled={currentPage === 0}
+              >
+                Previous Page
+              </button>
+              <button
+                className='pagination-btn'
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={startIndex + transactionsPerPage >= transactions.length}
+              >
+                Next Page
+              </button>
+            </div>
           </div>
           <div className='transactiondetails2'>
             <div className='p' style={{ border: 'none' }}>Transaction Detail</div>
-            <div className='price'>$5999.0</div>
+            <div className='price'>
+              ${selectedTransaction ?Number( selectedTransaction.amount).toFixed(2) : '0.00'}
+            </div>
             <div className='detail'>
               <div className='from'>
-                <div
-                  className='pink'
-                  style={{ margin: '0.65rem', height: '2.5rem', width: '2.5rem' }}
-                ></div>
+                <div className='pink' style={{ margin: '0.65rem', height: '2.5rem', width: '2.5rem' }}></div>
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <div>FROM</div>
-                  <div style={{ fontWeight: '700' }}>DevCom</div>
+                  <div style={{ fontWeight: '700' }}>You</div>
                 </div>
               </div>
               <div className='arrow'>
                 <i className="fa-solid fa-arrow-down fa-3x"></i>
               </div>
               <div className='to'>
-                <div
-                  style={{
-                    margin: '0.65rem',
-                    height: '2.5rem',
-                    width: '2.5rem',
-                    backgroundColor: '#784F72',
-                    borderRadius: '50%',
-                  }}
-                ></div>
+                <div style={{ margin: '0.65rem', height: '2.5rem', width: '2.5rem', backgroundColor: '#784F72', borderRadius: '50%' }}></div>
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <div>TO</div>
-                  <div style={{ fontWeight: '700' }}>You</div>
+                  <div style={{ fontWeight: '700' }}>{selectedTransaction ? selectedTransaction.recipient : 'You'}</div>
                 </div>
               </div>
             </div>

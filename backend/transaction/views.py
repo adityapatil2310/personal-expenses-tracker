@@ -51,7 +51,7 @@ def transactions(request, id):
 @api_view(['GET'])
 def categoryTransaction(request, userId, category):
     try:
-        transactions = Transactions.objects.filter(userId=userId, name=category)
+        transactions = Transactions.objects.filter(userId=userId, category=category)
     except:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':

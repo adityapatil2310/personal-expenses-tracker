@@ -8,6 +8,7 @@ import Transaction from './components/Transactions';
 import Dashboard from "./components/dashboard";
 import { TruecntextProvider } from "./components/context";
 import LandingPage from "./components/landingpage";
+import AddTransaction from "./components/addtransaction";
 
 function App() {
   return(
@@ -18,10 +19,11 @@ function App() {
     <Route path="/login" element={<Login/>}/>
     <Route path="/register" element={<Register/>}/>
     <Route path="/transaction" element={<Transaction />} />
+    <Route path="/transaction/addTransaction" element={<AddTransaction />} />
     <Route path="/analytics" element={<Analytics />} />
     <Route path="/dashboard" element={<Dashboard/>}/>
   </Routes>
-</BrowserRouter>
+      </BrowserRouter>
     </TruecntextProvider>
 );
 }

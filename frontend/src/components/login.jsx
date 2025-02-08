@@ -1,6 +1,5 @@
 import '../style/login.css';
-import { useContext, useState } from 'react';
-import TrueContext from './context';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -9,26 +8,46 @@ export default function Login() {
     const navigate = useNavigate();
 
     const handleLogin = async () => {
-        const response = await fetch('http://127.0.0.1:8000/authy/login/', { 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: email,
-                password: password,
-            }),
-        });
-    
-        if (response.ok) {
+        localStorage.removeItem('token'); 
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/authy/login/', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: email,
+                    password: password,
+                }),
+            });
+
+            if (!response.ok) {
+                alert("Check Email and Password Again");
+                return;
+            }
+
             const data = await response.json();
-            localStorage.setItem('token', data.token); 
+            localStorage.setItem('token', data.token);
+
+            const userIdResponse = await fetch('http://127.0.0.1:8000/authy/getId/', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Token ${data.token}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (userIdResponse.ok) {
+                const userData = await userIdResponse.json();
+                console.log("Logged-in User ID:", userData.userId);
+            }
+
             navigate('/dashboard');
-        } else {
-           alert("Check Email and Password Again")
+        } catch (error) {
+            console.error('Error:', error);
         }
     };
-    
 
     return (
         <div className="loginpage">
@@ -41,23 +60,9 @@ export default function Login() {
                             alt="User"
                         />
                     </div>
-                    <input
-                    className='input1'
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input
-                    className='input1'
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <button className="btn" onClick={handleLogin}>
-                        Login
-                    </button>
+                    <input className='input1' type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input className='input1' type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <button className="btn" onClick={handleLogin}>Login</button>
                 </div>
                 <div className="textdiv">
                     <div className="text">Expense</div>
