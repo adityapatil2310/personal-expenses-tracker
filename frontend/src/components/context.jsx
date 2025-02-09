@@ -3,6 +3,11 @@ import { createContext, useContext, useState, useEffect } from "react";
 const TrueContext = createContext();
 
 export function TruecntextProvider({ children }) {
+    const [financeData, setFinanceData] = useState({
+        moneySpent: { year: null, month: null },
+        savingsGoal: { year:null, month: null},
+        progress: { year: null, month: null},
+      });
     const [userid, setUserid] = useState(null);
     const getCurrentDateTime = () => {
         const now = new Date();
@@ -61,7 +66,7 @@ export function TruecntextProvider({ children }) {
     
 
     return (
-        <TrueContext.Provider value={{ istrue, setIstrue, formData, setFormData,userid }}>
+        <TrueContext.Provider value={{ istrue, setIstrue, formData, setFormData,userid,financeData,setFinanceData }}>
             {children}
         </TrueContext.Provider>
     );

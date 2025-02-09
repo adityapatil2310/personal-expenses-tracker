@@ -9,6 +9,7 @@ import Dashboard from "./components/dashboard";
 import { TruecntextProvider } from "./components/context";
 import LandingPage from "./components/landingpage";
 import AddTransaction from "./components/addtransaction";
+import Goals from "./components/gols";
 
 function App() {
   return(
@@ -22,6 +23,7 @@ function App() {
     <Route path="/transaction/addTransaction" element={<AddTransaction />} />
     <Route path="/analytics" element={<Analytics />} />
     <Route path="/dashboard" element={<Dashboard/>}/>
+    <Route path="/analytics/goals" element={<Goals/>}/>
   </Routes>
       </BrowserRouter>
     </TruecntextProvider>

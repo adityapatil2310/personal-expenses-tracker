@@ -1,8 +1,12 @@
 import React, { useEffect, useRef,useState} from "react";
 import "../style/analytics.css";
 import Sidebar from "./Sidebar";
+import { useContext } from "react";
+import TrueContext from "./context";
+import { useNavigate } from "react-router-dom";
 
 export default function Analytics() {
+  const {financeData,setFinanceData}=useContext(TrueContext)
    const [id,setId]=useState(null)
   const graph1Ref = useRef(null);
   const pieChartRef = useRef(null);
@@ -10,8 +14,16 @@ export default function Analytics() {
   const[salon,setSalon]=useState(0)
   const[payment,setPayment]=useState(0)
   const[other,setOther]=useState(0)
+  const navigate16=useNavigate();
+
+  const moneySpentYear = financeData?.moneySpent?.year || 5;
+const moneySpentMonth = financeData?.moneySpent?.month || 5;
+
+console.log("Finance Data:", financeData); // Debugging
+console.log("Money Spent Year:", moneySpentYear);
 
   useEffect(() => {
+    console.log(financeData)
     if (window.Chart) {
      
       const lineCtx = graph1Ref.current.getContext("2d");
@@ -192,8 +204,13 @@ export default function Analytics() {
     }
 dam();
 },
-[id])
+[id]);
 
+function goalsredirect(){
+  navigate16("/analytics/goals");
+}
+
+console.log(financeData.savingsGoal.month)
   return (
     <div className="analytics-page">
       <Sidebar className="sidebar" />
@@ -217,20 +234,20 @@ dam();
             <div className="my-goals">My Goals</div>
             <div className="money-spent">
               <p style={{ fontWeight: "700", color: "#C4FAFF" }}>money spent</p>
-              <p>this year:$10000</p>
-              <p>this month:$2000</p>
+              <p>this year:${financeData.moneySpent.year}</p>
+              <p>this month:${financeData.moneySpent.month}</p>
             </div>
             <div className="saving">
               <p style={{ fontWeight: "700" }}>savings goal</p>
-              <p>this month:$1200</p>
-              <p>this year:$5000</p>
+              <p>this year:${financeData.savingsGoal.year}</p>
+              <p>this month:${financeData.savingsGoal.month}</p>
             </div>
             <div className="progress">
               <p style={{ fontWeight: "700" }}>progress</p>
-              <p>this month:$600</p>
-              <p>this year:$3000</p>
+              <p>this year:${financeData.progress.year}</p>
+              <p>this month:${financeData.progress.month}</p>
             </div>
-            <button className="edit">Edit</button>
+            <button className="edit" onClick={goalsredirect}>Edit</button>
           </div>
         </div>
         <div className="expense-summary">
