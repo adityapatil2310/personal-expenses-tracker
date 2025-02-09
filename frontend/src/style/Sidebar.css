@@ -61,14 +61,17 @@
     width: 90%;
     height: 4.6875%;
     font-weight: 700;
-    padding: 8%; 
-    margin: 3% auto; 
+    padding: 10%; 
+    margin: 5% auto; 
     font-size: 1.3rem;
     cursor: pointer;
   }
 
   .logoutbtn:hover{
-color: red;
+    border-radius: 7%;
+    border: 2px solid #9bd4e2;
+    background: #e8eef2;
+    color: #184c89;
   }
   
   .userimg {

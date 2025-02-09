@@ -6,7 +6,7 @@ import TrueContext from "./context";
 import { useNavigate } from "react-router-dom";
 
 export default function Analytics() {
-  const {financeData,setFinanceData}=useContext(TrueContext)
+  const {financeData,setFinanceData,spent}=useContext(TrueContext)
    const [id,setId]=useState(null)
   const graph1Ref = useRef(null);
   const pieChartRef = useRef(null);
@@ -210,6 +210,9 @@ function goalsredirect(){
   navigate16("/analytics/goals");
 }
 
+let progressyear=financeData.savingsGoal.year-spent;
+let progressmonth=financeData.savingsGoal.month-spent;
+
 console.log(financeData.savingsGoal.month)
   return (
     <div className="analytics-page">
@@ -234,8 +237,8 @@ console.log(financeData.savingsGoal.month)
             <div className="my-goals">My Goals</div>
             <div className="money-spent">
               <p style={{ fontWeight: "700", color: "#C4FAFF" }}>money spent</p>
-              <p>this year:${financeData.moneySpent.year}</p>
-              <p>this month:${financeData.moneySpent.month}</p>
+              <p>this year:${spent}</p>
+              <p>this month:${spent}</p>
             </div>
             <div className="saving">
               <p style={{ fontWeight: "700" }}>savings goal</p>
@@ -244,8 +247,8 @@ console.log(financeData.savingsGoal.month)
             </div>
             <div className="progress">
               <p style={{ fontWeight: "700" }}>progress</p>
-              <p>this year:${financeData.progress.year}</p>
-              <p>this month:${financeData.progress.month}</p>
+              <p>this year:${progressyear}</p>
+              <p>this month:${progressmonth}</p>
             </div>
             <button className="edit" onClick={goalsredirect}>Edit</button>
           </div>

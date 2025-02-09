@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import Sidebar from "./Sidebar";
 import "../style/dashboard.css";
+import { useContext } from "react";
+import TrueContext from "./context";
 
 export default function Dashboard() {
+    const {spent,setSpent}=useContext(TrueContext)
     const chartRef = useRef(null);
-    const [spent, setSpent] = useState(0);
     const [receiver, setReceiver] = useState([]);
     const[house,setHouse]=useState(0)
     const[salon,setSalon]=useState(0)
