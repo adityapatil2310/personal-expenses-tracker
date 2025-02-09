@@ -131,7 +131,7 @@ console.log(userData.userId);
                 }
         
                 const data7 = await res7.json();
-                // console.log("Category Transactions:", data7);
+                // console.log( data7);
                 return data7;
             } catch (error) {
                 console.error("Error fetching category transactions:", error);

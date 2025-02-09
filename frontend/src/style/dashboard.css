@@ -18,8 +18,9 @@
 }
 
 .header {
+    margin-left: 2%;
     height: 10%;
-    font-size: 150%;
+    font-size: 200%;
     padding-top: 4%;
     width: 100%;
 }

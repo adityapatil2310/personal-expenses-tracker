@@ -6,6 +6,7 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const navigate2=useNavigate();
   const navigate3=useNavigate();
+  const navigate10=useNavigate();
   const [btnid, setBtnid] = useState(null);
 
   function handleclick(id) {
@@ -19,6 +20,38 @@ export default function Sidebar() {
   }
   function dashboardredirect(){
     navigate3("/dashboard");
+  }
+
+    const handleLogout = async () => {
+      const token = localStorage.getItem("token");
+  
+      if (!token) {
+          alert("You are already logged out!");
+          return;
+      }
+  
+      const confirmLogout = window.confirm("Are you sure you want to log out?");
+      if (!confirmLogout) return;
+  
+      try {
+          const response = await fetch("http://127.0.0.1:8000/authy/logout/", {
+              method: "POST",
+              headers: {
+                  "Authorization": `Token ${token}`,
+              },
+          });
+  
+          if (response.ok) {
+              localStorage.removeItem("token"); 
+              navigate10("/")
+          } else {
+              alert("Logout failed. Please try again.");
+          }
+      } catch (error) {
+          console.error("Error logging out:", error);
+          alert("An error occurred. Please try again.");
+      }
+  
   }
 
   return (
@@ -57,7 +90,7 @@ export default function Sidebar() {
         </div>
 
         <div className="lower">
-          <button className="logoutbtn">Logout</button>
+          <button className="logoutbtn" onClick={handleLogout}>Logout</button>
           <hr className="hrline" />
         </div>
       </div>

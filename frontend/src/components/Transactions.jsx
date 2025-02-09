@@ -94,7 +94,7 @@ export default function Transaction() {
                   paginatedTransactions.map((e, i) => (
                     <tr
                       key={i}
-                      onClick={() => setSelectedTransaction(e)} // Store selected transaction
+                      onClick={() => setSelectedTransaction(e)} 
                       className={`${selectedTransaction === e ? 'clicked' : ''} tr`}
                     >
                       <td className='td'>{formatDate(e.datetime.split(" ")[0]) || 'N/A'}</td>
