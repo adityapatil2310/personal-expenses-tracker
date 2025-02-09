@@ -64,6 +64,7 @@
     padding: 8%; 
     margin: 3% auto; 
     font-size: 1.3rem;
+    cursor: pointer;
   }
   
   .userimg {
