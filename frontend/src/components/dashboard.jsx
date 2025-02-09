@@ -220,7 +220,7 @@ dam();
                             {receiver.length > 0 && receiver[0] && (
                                 <div className="devcom2">
                                     <div style={{ display: "flex", width: "100%" }}>
-                                        <div className="pink2"></div>
+                                        {/* <div className="pink2"></div> */}
                                         <div>{receiver[0].recipient}</div>
                                     </div>
                                     <div style={{ color: "red" }}>${receiver[0].amount}</div>
@@ -230,7 +230,7 @@ dam();
                             {receiver.length > 1 && receiver[1] && (
                                 <div className="seekOut">
                                     <div style={{ display: "flex", width: "100%" }}>
-                                        <div className="yellow2"></div>
+                                        {/* <div className="yellow2"></div> */}
                                         <div>{receiver[1].recipient}</div>
                                     </div>
                                     <div style={{ color: "red" }}>${receiver[1].amount}</div>
@@ -240,7 +240,7 @@ dam();
                             {receiver.length > 2 && receiver[2] && (
                                 <div className="urban-grocers">
                                     <div style={{ display: "flex", width: "100%" }}>
-                                        <div className="blue2"></div>
+                                        {/* <div className="blue2"></div> */}
                                         <div>{receiver[2].recipient}</div>
                                     </div>
                                     <div style={{ color: "red" }}>${receiver[2].amount}</div>
@@ -250,7 +250,7 @@ dam();
                             {receiver.length > 3 && receiver[3] && (
                                 <div className="matrix-salon">
                                     <div style={{ display: "flex", width: "100%" }}>
-                                        <div className="lightpink2"></div>
+                                        {/* <div className="lightpink2"></div> */}
                                         <div>{receiver[3].recipient}</div>
                                     </div>
                                     <div style={{ color: "red" }}>${receiver[3].amount}</div>

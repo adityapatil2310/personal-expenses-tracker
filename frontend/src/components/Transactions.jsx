@@ -85,7 +85,7 @@ export default function Transaction() {
               <thead>
                 <tr className='TH'>
                   <th className='date'>Date</th>
-                  <th className='from1'>From</th>
+                  <th className='from1'>From/To</th>
                   <th className='amount'>Amount</th>
                 </tr>
               </thead>
@@ -100,7 +100,7 @@ export default function Transaction() {
                       <td className='td'>{formatDate(e.datetime.split(" ")[0]) || 'N/A'}</td>
                       <td className='td'>
                         <div className='data'>
-                          <div className='pink'></div>
+                          {/* <div className='pink'></div> */}
                           <div>{e.recipient || 'Unknown'}</div>
                         </div>
                       </td>
@@ -138,8 +138,8 @@ export default function Transaction() {
             </div>
             <div className='detail'>
               <div className='from'>
-                <div className='pink' style={{ margin: '0.65rem', height: '2.5rem', width: '2.5rem' }}></div>
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                {/* <div className='pink' style={{ margin: '0.65rem', height: '2.5rem', width: '2.5rem' }}></div> */}
+                <div style={{fontSize:"130%", marginLeft:"4%",display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <div>FROM</div>
                   <div style={{ fontWeight: '700' }}>You</div>
                 </div>
@@ -148,8 +148,8 @@ export default function Transaction() {
                 <i className="fa-solid fa-arrow-down fa-3x"></i>
               </div>
               <div className='to'>
-                <div style={{ margin: '0.65rem', height: '2.5rem', width: '2.5rem', backgroundColor: '#784F72', borderRadius: '50%' }}></div>
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                {/* <div style={{ margin: '0.65rem', height: '2.5rem', width: '2.5rem', backgroundColor: '#784F72', borderRadius: '50%' }}></div> */}
+                <div style={{ marginLeft:"4%",fontSize:"130%",display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <div>TO</div>
                   <div style={{ fontWeight: '700' }}>{selectedTransaction ? selectedTransaction.recipient : 'You'}</div>
                 </div>

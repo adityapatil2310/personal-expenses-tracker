@@ -230,6 +230,7 @@ dam();
               <p>this month:$600</p>
               <p>this year:$3000</p>
             </div>
+            <button className="edit">Edit</button>
           </div>
         </div>
         <div className="expense-summary">
@@ -294,6 +295,7 @@ dam();
             <div className="amount-left">
               <p>Amount Left</p>
               <p>$3061.00</p>
+              
             </div>
           </div>
         </div>
