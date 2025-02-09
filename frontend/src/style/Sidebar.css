@@ -66,6 +66,10 @@
     font-size: 1.3rem;
     cursor: pointer;
   }
+
+  .logoutbtn:hover{
+color: red;
+  }
   
   .userimg {
     height: 50%;
